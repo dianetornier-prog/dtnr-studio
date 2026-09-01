@@ -28,24 +28,23 @@ export function About() {
           "
         >
           <Image
-            src="/assets/demo1.jpeg"
+            src="/assets/3.webp"
             alt=""
-            width={550}
-            height={550}
+            width={1200}
+            height={800}
             aria-hidden
-            sizes="(max-width: 768px) 100vw, 550px"
+            sizes="(max-width: 768px) 100vw, 60vw"
             className="
-              pointer-events-none absolute inset-x-0 z-0 mx-auto aspect-square
-              h-auto w-full object-cover opacity-40 blur-xs md:inset-x-auto
-              md:top-[-120px] md:right-0 md:h-[600px] md:w-[600px]
-              md:opacity-100
+              pointer-events-none absolute inset-x-0 z-0 mx-auto h-auto
+              max-h-[600px] w-full object-cover opacity-70 md:inset-x-auto
+              md:top-[-120px] md:right-0 md:w-[60vw]
             "
           />
 
           <p
             className="
-              relative z-10 mx-auto w-full max-w-[1200px] text-justify text-base
-              md:text-2xl
+              relative z-10 mx-auto w-full max-w-[1200px] bg-background/50 p-4
+              text-justify text-base md:text-2xl
             "
           >
             <strong>Imaginer. Visualiser. Resenter.</strong>

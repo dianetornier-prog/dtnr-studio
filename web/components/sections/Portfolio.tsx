@@ -1,8 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import kitchen from "@/public/assets/8.webp";
+import livingRoom from "@/public/assets/9.webp";
+import house from "@/public/assets/10.webp";
+import entryway from "@/public/assets/11.webp";
+import diningRoom from "@/public/assets/12.webp";
+
 import SectionLayout from "../layout/section-layout";
 import { CustomButton } from "../ui/CustomButton";
+
+const tileSizes = "(max-width: 768px) 50vw, 40vw";
 
 export function Portfolio() {
   const router = useRouter();
@@ -22,45 +32,74 @@ export function Portfolio() {
             xl:max-w-[min(98vw,2400px,165vh)]
           "
         >
-          <div
-            className="
-              absolute top-[15.8%] left-[20.2%] h-[60.8%] w-[30.8%]
-              bg-heading/50
-            "
+          <Image
+            src={kitchen}
+            alt=""
+            aria-hidden
+            sizes={tileSizes}
+            className="absolute top-[10%] left-[0%] z-0 h-auto w-[55%]"
           />
-          <div
-            className="
-              absolute top-[9.5%] left-[41.8%] h-[24.3%] w-[36%] bg-heading/40
-            "
+
+          <Image
+            src={house}
+            alt=""
+            aria-hidden
+            sizes={tileSizes}
+            className="absolute top-[0%] left-[48%] z-2 h-auto w-[45%]"
           />
-          <div
+
+          <Image
+            src={livingRoom}
+            alt=""
+            aria-hidden
+            sizes={tileSizes}
             className="
-              absolute top-[27.5%] left-[51.3%] h-[53.5%] w-[22.5%]
-              bg-heading/40
-            "
-          />
-          <div
-            className="
-              absolute top-[54.5%] left-[40%] h-[36.5%] w-[18.9%] bg-heading/40
+              box-shadow-lg absolute top-[58%] left-[14%] z-1 h-auto w-[36%]
             "
           />
 
-          <div className="absolute inset-0 flex items-center justify-center">
-            <h1
+          <Image
+            src={entryway}
+            alt=""
+            aria-hidden
+            sizes={tileSizes}
+            className="
+              box-shadow-lg absolute top-[52%] left-[33%] z-2 h-auto w-[32%]
+            "
+          />
+
+          <Image
+            src={diningRoom}
+            alt=""
+            aria-hidden
+            sizes={tileSizes}
+            className="
+              box-shadow-lg absolute top-[45%] left-[52%] z-1 h-auto w-[48%]
+            "
+          />
+
+          <div
+            className="
+              box-shadow-lg pointer-events-none absolute inset-0 z-20 flex
+              items-center justify-center
+            "
+          >
+            <h2
+              id="portfolio-heading"
               className="
-                font-title text-[30px] font-medium tracking-[0.2em]
-                md:text-[80px]
+                box-shadow-lg bg-heading px-15 pt-2 pb-0 font-title text-[30px]
+                leading-none font-light text-primary-foreground md:text-[80px]
               "
             >
               PORTFOLIO
-            </h1>
+            </h2>
           </div>
         </div>
 
         <CustomButton
           outline
           className="
-            mx-auto mt-[-25px] md:mt-[-50px]
+            mx-auto -mt-6.25 md:-mt-8
           "
           onClick={() => router.push("/portfolio-detail")}
         >

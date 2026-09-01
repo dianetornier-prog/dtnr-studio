@@ -56,7 +56,7 @@ export function Hero() {
             <h1
               id="accueil-heading"
               className="
-                mt-5 w-full font-title text-[650px] leading-none
+                mt-5 w-full font-title text-[600px] leading-none
                 tracking-[0.02em] text-heading
               "
             >
@@ -70,8 +70,8 @@ export function Hero() {
               style={{ bottom: -LEFT_BOTTOM_OFFSET }}
             >
               <Image
-                className="w-full rounded-lg object-contain blur-xs"
-                src="/assets/demo1.jpeg"
+                className="w-full rounded-lg object-contain"
+                src="/assets/1.webp"
                 alt=""
                 width={550}
                 height={550}
@@ -101,11 +101,11 @@ export function Hero() {
 
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/assets/demo1.jpeg"
+                  src="/assets/2.webp"
                   alt="Intérieur minimaliste, aperçu des réalisations DTNR Studio"
                   fill
                   sizes="600px"
-                  className="rounded-lg object-cover blur-xs"
+                  className="object-cover"
                 />
               </div>
             </div>

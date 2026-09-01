@@ -46,7 +46,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
         <p
           className="
             font-ibm-plex-mono text-[40px] leading-none text-primary-foreground
-            lg:text-[100px]
+            lg:text-[80px]
           "
         >
           {service.idx}.

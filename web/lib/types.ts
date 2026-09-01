@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export type SectionId = "a-propos" | "services" | "portfolio" | "contact";
 
 export type Section = {
@@ -8,6 +10,7 @@ export type Section = {
 
 export type PricingOffer = {
   readonly name: string;
+  readonly price: string;
   readonly description: string;
 };
 
@@ -16,6 +19,11 @@ export type Service = {
   readonly image: string;
   readonly label: string;
   readonly idx: string;
+};
+
+export type PortfolioProject = {
+  readonly image: StaticImageData;
+  readonly alt: string;
 };
 
 export type SiteConfig = {

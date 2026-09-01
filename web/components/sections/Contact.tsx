@@ -181,7 +181,7 @@ export function Contact() {
 
         <Image
           className="mt-[-20px]  w-full rounded-lg object-cover"
-          src="/assets/demo5.png"
+          src="/assets/13.webp"
           alt="DTNR Studio"
           width={500}
           height={500}

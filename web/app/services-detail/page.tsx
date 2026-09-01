@@ -74,8 +74,8 @@ export default function ServicesDetailPage() {
         </div>
         <h2
           className="
-            mx-auto mt-20 w-full text-center font-title text-3xl font-light
-            text-heading md:text-5xl lg:text-7xl
+            mx-auto mt-15 mb-15 w-full text-center font-title text-3xl
+            font-light text-heading md:text-5xl lg:text-7xl
           "
         >
           Notre méthode
