@@ -1,12 +1,14 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import { send } from "@emailjs/browser";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
 import { CustomInput } from "@/components/ui/CustomInput";
 import { CustomTextarea } from "@/components/ui/CustomTextarea";
 import SectionLayout from "../layout/section-layout";
 import { CustomButton } from "../ui/CustomButton";
-import Image from "next/image";
 
 type ContactFormValues = {
   name: string;
@@ -22,7 +24,14 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const POSTAL_CODE_REGEX = /^\d{5}$/;
 const MESSAGE_MAX_LENGTH = 1000;
 
+type SubmissionStatus =
+  | { readonly type: "success"; readonly message: string }
+  | { readonly type: "error"; readonly message: string };
+
 export function Contact() {
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SubmissionStatus | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -41,9 +50,50 @@ export function Contact() {
   });
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
-    // TODO: brancher l'envoi réel (API / service email).
-    console.log(data);
-    reset();
+    setSubmissionStatus(null);
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+
+    console.log(serviceId, templateId, publicKey);
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmissionStatus({
+        type: "error",
+        message:
+          "Le formulaire est temporairement indisponible. Veuillez réessayer plus tard.",
+      });
+      return;
+    }
+
+    try {
+      await send(
+        serviceId,
+        templateId,
+        {
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          postalCode: data.postalCode,
+          city: data.city,
+          message: data.message,
+        },
+        publicKey,
+      );
+
+      reset();
+      setSubmissionStatus({
+        type: "success",
+        message: "Votre message a bien été envoyé.",
+      });
+    } catch {
+      setSubmissionStatus({
+        type: "error",
+        message:
+          "L’envoi du message a échoué. Veuillez réessayer dans quelques instants.",
+      });
+    }
   };
 
   return (
@@ -174,9 +224,30 @@ export function Contact() {
             })}
           />
 
-          <CustomButton type="submit" disabled={isSubmitting}>
-            Envoyer
+          <CustomButton
+            type="submit"
+            disabled={isSubmitting}
+            aria-describedby={
+              submissionStatus ? "contact-submission-status" : undefined
+            }
+          >
+            {isSubmitting ? "Envoi en cours…" : "Envoyer"}
           </CustomButton>
+
+          {submissionStatus ? (
+            <p
+              id="contact-submission-status"
+              role="status"
+              aria-live="polite"
+              className={
+                submissionStatus.type === "success"
+                  ? "text-foreground"
+                  : "text-heading"
+              }
+            >
+              {submissionStatus.message}
+            </p>
+          ) : null}
         </form>
 
         <Image
