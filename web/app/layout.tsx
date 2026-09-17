@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "@/components/footer";
 import { SkipLink } from "@/components/ui/SkipLink";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -77,6 +78,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col">
         <SkipLink />
         {children}
+        <Footer />
       </body>
     </html>
   );

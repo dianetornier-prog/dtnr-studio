@@ -4,7 +4,6 @@ import { About } from "@/components/sections/About";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Services } from "@/components/sections/Services";
 import { Contact } from "@/components/sections/Contact";
-import Footer from "@/components/footer";
 import PageLayout from "@/components/layout/page-layout";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
         <Portfolio />
         <Contact />
       </PageLayout>
-      <Footer />
     </>
   );
 }

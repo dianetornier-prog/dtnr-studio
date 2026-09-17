@@ -47,7 +47,7 @@ export function About() {
               text-justify text-base md:text-2xl
             "
           >
-            <strong>Imaginer. Visualiser. Resenter.</strong>
+            <strong>Imaginer. Visualiser. Révéler.</strong>
             <br /> <br /> Studio de décoration intérieure et de visualisation 3D
             basé à Senlis (60300), nous accompagnons particuliers et
             professionnels dans la transformation de leurs espaces où qu'ils
